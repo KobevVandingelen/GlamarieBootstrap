@@ -16,35 +16,44 @@
 <body>
 <div class="header-include" th:insert="header :: header"></div>
 
-<div class="AfsprakenLijst-Wrapper">
-    <div class="AfsprakenLijst-Afspraak-Wrapper">
 
-        <div class="AfsprakenLijst-Form2-Wrapper">
-
-            <h1 class="titel1">Maak hier je nieuw Portfolio</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1 class="mt-5">Maak hier je nieuw Portfolio</h1>
 
             <form th:action="@{/admin/portfolionew}" th:object="${portfolio}" method="post">
 
                 <div class="error" th:if="${#fields.hasErrors('*')}">Je hebt een veld leeg gelaten! </div>
 
+                <div class="form-group">
                 <div class="label2">Portfolio Naam</div>
-                <label for="nagelAddPath"></label>
-                <input id="nagelAddPath" type="text" th:field="*{portfolioName}" th:errorclass="fieldError">
+                <label for="nagelAddPath" class=""></label>
+                <input id="nagelAddPath" class="form-control" type="text" th:field="*{portfolioName}" th:errorclass="fieldError">
+                </div>
                 <div>
-                    <input class="submit1" type="submit" value="create">
+                    <input class="btn btn-primary mt-3" type="submit" value="create">
                 </div>
 
             </form>
         </div>
     </div>
+
+
     <div class="AfsprakenLijst-Afspraken-Wrapper">
-        <h1 class="titel1">Overzicht Portfolio's</h1>
-        <div class="Table-wrapper">
-            <table>
+
+        <h1 class="mt-5">Huidige Portfolios</h1>
+        <div class="Table-wrapper mt-4">
+
+            <table class="table table-dark ">
+                <thead>
                 <tr>
-                    <th>Naam</th>
-                    <th>Edit</th>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Edit?</th>
+
                 </tr>
+                </thead>
+                <tbody>
                 <div class="AfsprakenLijst-Afspraak-Wrapper" th:each="portfolio: ${portfolios}"
                      th:object="${portfolio}">
                     <tr>
@@ -57,11 +66,14 @@
                         </th>
                     </tr>
                 </div>
-
+                </tbody>
             </table>
+
+
         </div>
     </div>
 </div>
+>
 
 </body>
 </html>

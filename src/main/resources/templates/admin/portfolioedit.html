@@ -16,27 +16,33 @@
 <body>
 <div class="header-include" th:insert="header :: header"></div>
 
-
-
-
-<div class="AfsprakenLijstEdit-Form-Wrapper" th:if="${portfolio}" th:object="${portfolio}">
-
-    <h1 class="titel1">Edit hier je portfolio</h1>
-
-    <form th:action="@{|/admin/portfolioedit/*{id}|}" method="post">
-
-        <div class="error" th:if="${#fields.hasErrors('*')}">Je hebt een veld leeg gelaten!</div>
-
-
-        <div class="label2">Portfolio naam</div>
-            <label for="portfolioEditName"></label>
-            <input id="portfolioEditName" type="text" th:field="*{portfolioName}" th:errorclass="fieldError">
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+    <div class="" th:if="${portfolio}" th:object="${portfolio}">
         <div>
-        <input class="submit1" type="submit" value="Edit je Portfolio">
-        </div>
 
-    </form>
+                    <h1 class="mt-4">Edit hier je portfolio</h1>
+
+                    <form th:action="@{|/admin/portfolioedit/*{id}|}" method="post">
+
+                        <div class="error" th:if="${#fields.hasErrors('*')}">Je hebt een veld leeg gelaten!</div>
+
+                        <div class="from-group">
+                            <div class="label2">Portfolio naam</div>
+                            <label for="portfolioEditName"></label>
+                            <input id="portfolioEditName" class="form-control" type="text" th:field="*{portfolioName}"
+                                   th:errorclass="fieldError">
+                        </div>
+                        <div>
+                            <input class="btn btn-primary mt-4" type="submit" value="Edit je Portfolio">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

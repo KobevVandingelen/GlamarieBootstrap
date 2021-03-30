@@ -16,22 +16,23 @@
 <body>
 <div class="header-include" th:insert="header :: header"></div>
 
-<div class="AfsprakenLijst-Wrapper">
-    <div>
-        <h1 class="titel1">Edit hier je users</h1>
-    </div>
 
-    <div class="AfsprakenLijst-Afspraken-Wrapper">
-        <div class="Table-wrapper">
-            <table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1 class="mt-5">Huidige Users</h1>
+            <table class="table table-dark mt-5">
+                <thead>
                 <tr>
-                    <th>User naam</th>
-                    <th>User role</th>
-                    <th>Edit role</th>
-                    <th>Edit</th>
-                </tr>
-                <div class="AfsprakenLijstEdit-Form-Wrapper" th:each="user: ${users}" th:object="${users}">
+                    <th scope="col">User naam</th>
+                    <th scope="col">User rold</th>
+                    <th scope="col">Edit role</th>
+                    <th scope="col">Edit</th>
 
+                </tr>
+                </thead>
+                <tbody>
+                <div th:each="user: ${users}" th:object="${users}">
                     <form th:action="@{|/admin/updateuser/${user.id}|}" method="post">
                         <tr>
                             <th>
@@ -43,7 +44,7 @@
                             <th>
                                 <div class="form-group">
                                     <label for="edituserole"></label>
-                                    <select  class="form-control form-control-sm" th:name="userrole" id="edituserole">
+                                    <select class="form-control form-control-sm" th:name="userrole" id="edituserole">
                                         <option value="USER">USER</option>
                                         <option value="ADMIN">ADMIN</option>
                                     </select>
@@ -51,15 +52,19 @@
                             </th>
                             <th>
                                 <div>
-                                    <input type="submit" value="Edit user">
+                                    <input class="btn btn-primary mt-3" type="submit" value="Edit user">
                                 </div>
                             </th>
                     </form>
-                    </tr>
                 </div>
+                </tbody>
             </table>
         </div>
     </div>
+
+</div>
+</div>
+</div>
 </div>
 
 

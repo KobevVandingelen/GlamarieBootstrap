@@ -16,61 +16,69 @@
 <body>
 <div class="header-include" th:insert="header :: header"></div>
 
-<div class="AfsprakenLijst-Wrapper">
-    <div class="AfsprakenLijst-Afspraak-Wrapper">
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
-        <div class="AfsprakenLijst-Form2-Wrapper">
-
-            <h1 class="titel1">Maak hier je nieuwe nagel</h1>
+            <h1 class="mt-4">Maak hier je nieuwe nagel</h1>
 
             <form th:action="@{/admin/nagelnew}" th:object="${nagel}" enctype="multipart/form-data" method="post">
 
+                <div class="form-group">
+                    <div class="label2">Kies kleur</div>
+                    <label for="nagelAddColor" class="exampleFormControlSelect1"></label>
+                    <select class="form-control" name="colorId" id="nagelAddColor">
+                        <option th:each="c:${colors}" th:value="${c.id}" th:text="${c.getColorName()}"></option>
+                    </select>
+                </div>
 
-                <div class="label2">Kies kleur</div>
-                <label for="nagelAddColor"></label>
-                <select name="colorId" id="nagelAddColor">
-                    <option th:each="c:${colors}" th:value="${c.id}" th:text="${c.getColorName()}"></option>
-                </select>
-
-                <div class="label2">Kies portfolio</div>
-                <label for="nagelAddPortfolio"></label>
-                <select th:name="portfolioId" id="nagelAddPortfolio">
-                    <option th:each="p: ${portfolios}" th:value="${p.id}" th:text="${p.portfolioName}">
-                    </option>
-                </select>
-
-                <div class="label2">Kies behandeling</div>
-                <label for="nagelAddNagelDetail"></label>
-                <select th:name="nagelDetailId" id="nagelAddNagelDetail">
-                    <option th:each="nd:${nageDetails}" th:value="${nd.id}"
-                            th:text="${nd.getBehandeling()}"></option>
-                </select>
-
-
-                <div>
-                    <input class="file-button" type="file" name="files">
+                <div class="form-group">
+                    <div class="mt-2">Kies portfolio</div>
+                    <label for="nagelAddPortfolio" class="exampleFormControlSelect1"></label>
+                    <select class="form-control" th:name="portfolioId" id="nagelAddPortfolio">
+                        <option th:each="p: ${portfolios}" th:value="${p.id}" th:text="${p.portfolioName}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="mt-2">Kies behandeling</div>
+                    <label for="nagelAddNagelDetail" class="exampleFormControlSelect1"></label>
+                    <select class="form-control" th:name="nagelDetailId" id="nagelAddNagelDetail">
+                        <option th:each="nd:${nageDetails}" th:value="${nd.id}"
+                                th:text="${nd.getBehandeling()}"></option>
+                    </select>
                 </div>
 
 
-                <div>
-                    <input class="submit1" type="submit" value="create">
+                <div class="form-group mt-4">
+                    <input class="form-control-file" type="file" name="files">
+                </div>
+
+
+                <div class="form-group mt-4">
+                    <input class="btn btn-primary"  type="submit" value="create">
                 </div>
             </form>
         </div>
     </div>
 
     <div class="AfsprakenLijst-Afspraken-Wrapper">
-        <h1 class="titel1">Overzicht nagels</h1>
+
+        <h1 class="mt-4">Huidige nagels</h1>
         <div class="Table-wrapper">
-            <table>
+
+            <table class="table table-dark ">
+                <thead>
                 <tr>
-                    <th>Naam foto</th>
-                    <th>Kleur</th>
-                    <th>Portfolio</th>
-                    <th>Behandeling</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th scope="col">Naam foto</th>
+                    <th scope="col">Kleur</th>
+                    <th scope="col">Portfolio</th>
+                    <th scope="col">Behandeling</th>
+                    <th scope="col">Edit?</th>
+                    <th scope="col">Delete</th>
                 </tr>
+                </thead>
+                <tbody>
                 <div class="AfsprakenLijst-Afspraak-Wrapper" th:each="nagel: ${nagels}" th:object="${nagel}">
                     <tr>
                         <th>
@@ -97,10 +105,12 @@
                         </th>
                     </tr>
                 </div>
+                </tbody>
             </table>
+
+
         </div>
     </div>
-
 
 
 </div>
