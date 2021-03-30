@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <link rel="stylesheet" href="/css/AfsprakenPlanner.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Contact pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+
+<div class="container">
+    <h1 class="text-center">AfsprakenLijst</h1>
+    <p class="text-center" th:if="${aantalafspraken == 0}">Er zijn geen afspraken meer vrij</p>
+    <p class="text-center" th:if="${aantalafspraken == 1}">Er is nog 1 afspraak vrij</p>
+    <p class="text-center" th:if="${aantalafspraken > 1}"
+       th:text="${'Er zijn nog ' +  aantalafspraken + ' afspraken vrij'}"></p>
+    <div class="text-center">
+        <span class="text-center" sec:authorize="isAuthenticated()"><a class="" th:href="@{/afsprakenbekijken}">Bekijk jouw afspraken</a></span>
+    </div>
+
+        <div class="border rounded p-3 mt-3" th:each="afspraak: ${afspraken}">
+            <form th:action="@{|/Afsprakenplanner/${afspraak.getId()}|}" th:object="${afspraak}" method="post">
+
+                <h5 th:text="*{'De datum van de afspraak is: ' + date}"></h5>
+                <h5 th:text="*{'Het uur van de afspraak is: ' + time}"></h5>
+                <label class="h5" for="AfspraakEditBehandeling">Kies je behandeling</label>
+                <select class="form-control" th:name="behandeling" id="AfspraakEditBehandeling">
+                    <option value="Nagels">Nagels</option>
+                    <option value="Massage">Massage</option>
+                    <option value="Pedicure">Pedicure</option>
+                    <option value="Manicure">Manicure</option>
+                </select>
+                <div class="AfsprakenLijst-Form-submit" sec:authorize="isAuthenticated()">
+                    <input class="btn btn-primary mt-3" type="submit" value="Maak afspraak">
+                </div>
+                <div class="text2" sec:authorize="isAnonymous()">Log je eerst aan <a href="/login">Log in </a></div>
+
+
+            </form>
+        </div>
+</div>
+
+
+</body>
+</html>

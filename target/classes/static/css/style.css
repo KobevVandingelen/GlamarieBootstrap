@@ -1,0 +1,75 @@
+.PortfolioListContainer{
+    width: 30%;
+}
+
+.PortfolioListLi a{
+    text-decoration: none;
+
+}
+
+.Portfoliolist-title{
+    font-family: Arial;
+}
+
+.buttonPrev{
+    font-size: 2vw;
+    border: 0;
+    padding: 1vw;
+    background-color: #f5f2ed;
+    position: fixed;
+    top: 40%;
+}
+
+
+.buttonNext{
+    font-size: 2vw;
+    border: 0;
+    padding: 1vw;
+    background-color: #f5f2ed;
+    left: 97.3%;
+    position: fixed;
+    top: 40%;
+
+}
+
+.BackButton{
+    text-decoration: none;
+}
+
+.price-img{
+    width: 100%;
+    height: auto;
+}
+
+.container-img{
+    width: 30%;
+}
+
+.error{
+    color: indianred;
+    font-size: larger;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.fieldError, input.fieldError{
+    background-color: indianred;
+}
+
+.errorMessagePaswoord{
+    display: none;
+    color: indianred;
+}
+
+#submitbutton{
+    display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.Hover:hover{
+    background-color: lightgray;
+}

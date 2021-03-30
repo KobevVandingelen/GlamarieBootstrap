@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+
+
+
+<div class="AfsprakenLijstEdit-Form-Wrapper" th:if="${portfolio}" th:object="${portfolio}">
+
+    <h1 class="titel1">Edit hier je portfolio</h1>
+
+    <form th:action="@{|/admin/portfolioedit/*{id}|}" method="post">
+
+        <div class="error" th:if="${#fields.hasErrors('*')}">Je hebt een veld leeg gelaten!</div>
+
+
+        <div class="label2">Portfolio naam</div>
+            <label for="portfolioEditName"></label>
+            <input id="portfolioEditName" type="text" th:field="*{portfolioName}" th:errorclass="fieldError">
+
+        <div>
+        <input class="submit1" type="submit" value="Edit je Portfolio">
+        </div>
+
+    </form>
+</div>
+
+
+</body>
+</html>

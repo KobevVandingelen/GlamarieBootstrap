@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/AfsprakenPlanner.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Afspraken bekijken pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+<div class="container">
+
+    <h1 class="text-center mt-3">Eigen afspraken</h1>
+    <div class="border rounded p-3 mt-3" th:each="afspraak: ${afspraken}">
+        <form th:action="@{|/afsprakenbekijken/${afspraak.getId()}|}" th:object="${afspraak}" method="post">
+
+            <h5  th:text="*{'De datum van de afspraak is: ' + date}"></h5>
+            <h5  th:text="*{'Het uur van de afspraak is: ' +  time }"></h5>
+            <h5  th:text="*{behandeling}"></h5>
+
+            <div class="AfsprakenLijst-Form-submit">
+                <input class="btn btn-primary mt-3" type="submit" value="Verwijder afspraak">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+</body>
+</html>

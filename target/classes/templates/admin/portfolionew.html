@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+<div class="AfsprakenLijst-Wrapper">
+    <div class="AfsprakenLijst-Afspraak-Wrapper">
+
+        <div class="AfsprakenLijst-Form2-Wrapper">
+
+            <h1 class="titel1">Maak hier je nieuw Portfolio</h1>
+
+            <form th:action="@{/admin/portfolionew}" th:object="${portfolio}" method="post">
+
+                <div class="error" th:if="${#fields.hasErrors('*')}">Je hebt een veld leeg gelaten! </div>
+
+                <div class="label2">Portfolio Naam</div>
+                <label for="nagelAddPath"></label>
+                <input id="nagelAddPath" type="text" th:field="*{portfolioName}" th:errorclass="fieldError">
+                <div>
+                    <input class="submit1" type="submit" value="create">
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="AfsprakenLijst-Afspraken-Wrapper">
+        <h1 class="titel1">Overzicht Portfolio's</h1>
+        <div class="Table-wrapper">
+            <table>
+                <tr>
+                    <th>Naam</th>
+                    <th>Edit</th>
+                </tr>
+                <div class="AfsprakenLijst-Afspraak-Wrapper" th:each="portfolio: ${portfolios}"
+                     th:object="${portfolio}">
+                    <tr>
+                        <th>
+                            <h1 class="AfsprakenLijst-Form-text"
+                                th:text="*{ portfolioName}"></h1>
+                        </th>
+                        <th>
+                            <a th:href="@{|/admin/portfolioedit/*{id}|}">Edit</a>
+                        </th>
+                    </tr>
+                </div>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

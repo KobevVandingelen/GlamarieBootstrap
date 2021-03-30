@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+
+<div class="container d-flex justify-content-center">
+    <div class="mt-5">
+
+        <div class="errorMessagePaswoord" id="errorMessage">ERROR paswoord komt niet overeen</div>
+        <div class="errorMessagePaswoord" id="errorMessage2">ERROR paswoord is niet helemaal ingevuld</div>
+
+
+        <h4>Heb je al een account? <a href="/login">Log in</a></h4>
+
+        <form th:action="@{/registratie}" method="post">
+
+
+            <label class="mt-3" for="AddUsername">Naam</label>
+            <input class="form-control" id="AddUsername" type="text" th:field="${user.username}">
+
+
+            <label class="mt-3" for="AddPaswoord">Paswoord</label>
+            <input class="form-control" id="AddPaswoord" type="password" th:name="paswoord1">
+
+
+            <label class="mt-3" for="AddPaswoord2">Paswoord 2de keer</label>
+            <input class="form-control" id="AddPaswoord2" type="password" th:name="paswoord2">
+
+
+            <div>
+                <input id="submitbutton" class="btn btn-primary mt-3" type="submit" value="Create user">
+            </div>
+
+        </form>
+        <button class="btn btn-primary mt-3" id="valideerbutoon" onclick="valideer()">valideer paswoord</button>
+    </div>
+</div>
+</body>
+</html>

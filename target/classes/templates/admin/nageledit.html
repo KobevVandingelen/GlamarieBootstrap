@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+
+
+<div class="AfsprakenLijstEdit-Form-Wrapper" th:if="${nagel}" th:object="${nagel}">
+
+    <h1 class="titel1">Edit hier je nagel</h1>
+
+    <form th:action="@{|/admin/nageledit/*{id}|}" method="post">
+        <div class="label2">Edit hier de datum</div>
+        <label for="nagelEditColor"></label>
+        <select name="colorId" id="nagelEditColor">
+            <option th:each="color: ${colors}" th:value="${color.id}" th:text="${color.colorName}" th:selected="${color.colorName == nagel.color.colorName}"></option>
+        </select>
+
+        <div class="label2">Kies portfolio</div>
+        <label for="nagelEditPortfolio"></label>
+        <select name="portfolioId" id="nagelEditPortfolio">
+            <option th:each="portfolio: ${portfolios}" th:value="${portfolio.id}" th:text="${portfolio.portfolioName}" th:selected="${portfolio.portfolioName == nagel.portfolio.portfolioName}"></option>
+        </select>
+
+        <div class="label2">Kies behandeling</div>
+        <label for="nagelEditDetail"></label>
+        <select name="nagelDetailId" id="nagelEditDetail">
+            <option th:each="nd: ${nageDetails}" th:value="${nd.id}" th:text="${nd.behandeling}" th:selected="${nd.behandeling == nagel.getNagelDetail().behandeling}"></option>
+        </select>
+
+        <div>
+            <input class="submit1" type="submit" value="edit">
+        </div>
+
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

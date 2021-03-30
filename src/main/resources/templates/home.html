@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/21220451b5.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    </style>
+    <script src="/js/myscripts.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home pagina</title>
+
+</head>
+<body>
+<div class="header-include" th:insert="header :: header"></div>
+<main>
+    <div class="container-md mt-5">
+
+        <div class="row gap-5">
+            <section class="col-md">
+                <h1 >Over mezelf</h1>
+                <p >Glamarie is een schoonheidsinstituut sinds 2021, gelegen in Eigenbrakel. We bieden een totaalpakket van
+                    verzorgingen aan om u er tip top te laten uit zien. Een plaats om even tijd te nemen voor jezelf en te
+                    ontsnappen aan de dagelijkse rush. <br><br>
+                    Een goede service en persoonlijke aanpak maken hierbij het verschil. <br><br>
+                    Glamarie spitst zich toe op verschillende specialisaties zoals kunstnagels, wimper/wenkbrauw kleuring en
+                    make-up. Maar biedt ook alle andere klassieke schoonheidsbehandelingen aan zoals lichaamsmassage,
+                    epilatie, gelaatsverzorging,... <br><br>
+                    Met een passie voor het vak heten we u van harte welkom. <br><br>
+                    Marie</p>
+            </section>
+
+            <section class="col-md-4">
+                <img class="img-fluid" th:src="@{img/Marie.png}" alt="Marie">
+            </section>
+        </div>
+
+        
+    </div>
+
+
+</main>
+
+</body>
+</html>
